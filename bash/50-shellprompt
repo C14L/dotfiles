@@ -5,7 +5,7 @@
 # Enable shell with gitaware and virtualenv
 # Clone git@github.com:jimeh/git-aware-prompt.git into ~/bin/ directory.
 
-export GITAWAREPROMPT=$HOME/dotfiles/thirdparty/git-aware-prompt
+export GITAWAREPROMPT=$DOTFILES_DIR/thirdparty/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
 
 # disable the default virtualenv prompt change
