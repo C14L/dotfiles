@@ -1,0 +1,14 @@
+[user]
+	name = Christian Steimel
+	email = me@C14L.com
+[alias]
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	ll = log --pretty=format:\"%h - %an, %ar : %s\"
+        lg = log --oneline --decorate --graph --all
+[core]
+	excludesfile = ~/.gitignore
+	editor = nvim -u ~/.vimrc
+[push]
+	default = simple
+

@@ -1,0 +1,10 @@
+##############################################################################
+# Android / Dart / Flutter
+##############################################################################
+
+if [ -d /opt/android ]; then
+    export ANDROID_HOME=/opt/android/sdk
+    export PATH=/opt/android/sdk/tools/bin:$PATH
+    export PATH=/opt/android/flutter/bin:$PATH
+fi
+

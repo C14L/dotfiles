@@ -1,0 +1,28 @@
+##############################################################################
+# Environment variables
+##############################################################################
+
+# Add ~/dotfiles/scripts to PATH
+export PATH="$PATH:$DOTFILES_DIR/scripts"
+
+# Set virtual env home dir
+export WORKON_HOME=~/venv
+
+# Servers
+export V874=$(cat ~/.login_v874)
+export SERVER01=$(cat ~/.login_server01)
+
+# Mark this as dev box
+export DEVBOX=1
+export ISDEV=1
+export DEVROOT=$HOME/Projects
+
+# File with code snips for "f" shortcut
+export SNIPSFILE="$HOME/.snips"
+
+# File with todos for "todo" alias
+export TODOFILE="$HOME/.todo"
+
+# Set default editor
+export EDITOR="nvim -u ~/.vimrc"
+

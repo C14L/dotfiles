@@ -1,0 +1,39 @@
+##############################################################################
+# Shell config loader
+##############################################################################
+
+export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Source bash settings from ~/dotfils/bash/*
+for f in $DOTFILES_DIR/bash/* ; do source $f ; done
+
+# Enable autojump "j" on my own devices
+source /usr/share/autojump/autojump.sh
+
+# Virtual environment settings
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+
+# Add FZF fuzzy searcher to bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Ignore Ctrl+D and do not close terminal (use 'exit')
+set -o ignoreeof
+
+# Header screen for new shells
+##############################################################################
+echo
+echo "  Hostname: $(hostname)"
+echo "  $(lsb_release -ds) ($XDG_SESSION_TYPE) $(uptime -p)"
+echo
+echo "  $HOME    $(df -h --output=used,size,pcent ~ |\
+    tail -n1 | sed -E 's/([0-9%]+)$/(\1 used)/')"
+echo -e $COLOR_BLUE
+echo "  IPv6:  $(/usr/share/i3blocks/iface -6 | head -n1)"
+echo "  IPv4:  $(/usr/share/i3blocks/iface -4 | head -n1)"
+echo -e $COLOR_YELLOW
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+touch "$TODOFILE" && cat "$TODOFILE" | grep -v '^$' | shuf | tail -n3 | sed 's/^/  > /'
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo -e $COLOR_NONE
+##############################################################################
+

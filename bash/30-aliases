@@ -1,0 +1,79 @@
+##############################################################################
+# Bash aliases
+##############################################################################
+
+alias lll='ls -lah'
+alias e='leafpad'
+alias o="xdg-open"
+alias v="nvim -u ~/.vimrc"; alias vi="nvim -u ~/.vimrc"; alias vim="nvim -u ~/.vimrc"
+alias vs="code -n ."
+alias wetter="curl wttr.in/karlsruhe"
+alias todo="cat $TODOFILE"
+alias gits="git status"
+
+# Fuzzy search my file of regularly used text snippets and add selection to clipboard.
+alias f="touch $SNIPSFILE && cat $SNIPSFILE | fzf | tr -d '\n' | xclip -selection clipboard"
+
+# Fuzzy search history and add selection to clipboard. Remove trivial history entries first.
+alias h="history | grep -Pv '(tmux|fg|bg|reset|vim|vi|nvim|v|f|j|vs|code -n|python|python3|tig|git status|git push|git diff --staged|git diff|git add \.|ls -la|lll|ll|ls|df -h|du -hs|hist|cd.?|cd ..|cd ~|exit?|date)$' | fzf --reverse --border --margin=0 --height=15 --color=light,bg+:6 | cut -d']' -f2 | sed 's/^ //' | tr -d '\n' | xclip -selection clipboard"
+
+# Generate a random 128 Bytes password, prepend a repeating string, and put it in the clipboard
+alias passwdgen='echo -n "zzzzz$(tr -dc [:alnum:][:punct:] </dev/urandom | head -c128)" | xclip -selection clipboard >/dev/null'
+
+# Web search on DDG
+function ddg {
+    q="$@"
+    lynx https://duckduckgo.com?q=${q// /%20}
+}
+
+##############################################################################
+# Print the date always in ISO format.
+##############################################################################
+
+alias date-iso-8601='date --rfc-3339=seconds'
+alias date-utc='date-iso-8601 --utc'
+alias date-to-unixtime='date +%s -d'
+alias isodate='date --iso-8601=seconds --utc'
+
+# Convert ISO timestamp to seconds since Epoch
+function unixtime {
+  if [[ $# -eq 0 ]] ; then
+    date +%s
+  else
+    date --date="@$1"
+  fi
+}
+
+##############################################################################
+# Shorten the Bash promt, only display user@hostname $
+##############################################################################
+
+alias shorten='PS1="\u\$ " && clear'
+
+##############################################################################
+# Look at my IP from the outside
+##############################################################################
+
+alias myip=' \
+    echo "ifconfig.co v4   $(curl -s4 https://ifconfig.co/)"   ; \
+    echo "ifconfig.co v6   $(curl -s6 https://ifconfig.co/)"   ; \
+    echo "icanhazip.com    $(curl -s https://icanhazip.com/)"  ; \
+    echo "echoip.info      $(curl -s https://echoip.info/)"    ; \
+    echo "canihazip.com    $(curl -s https://canihazip.com/s)" ; \
+    echo -n "" \
+'
+
+##############################################################################
+# Ssh connection shortcuts
+##############################################################################
+
+alias v874="ssh $V874"
+alias server01="ssh $SERVER01"
+
+##############################################################################
+# Mount and unmount encfs encrypted ~/Documents/Private_encfs on ~/Private:
+##############################################################################
+
+alias mprivate="encfs $HOME/Documents/Private_encfs $HOME/Private"
+alias uprivate="fusermount -u $HOME/Private"
+

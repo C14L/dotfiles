@@ -1,0 +1,22 @@
+##############################################################################
+# NPM settings
+##############################################################################
+
+# Use for global node/npm packages. Needs also an entry in ~/.npmrc
+# with the line `prefix=${HOME}/.npm-packages`.
+# See https://stackoverflow.com/a/26825428/5520354
+NPM_PACKAGES="${HOME}/.npm-packages"
+
+mkdir -p $NPM_PACKAGES
+
+if [[ -d $NPM_PACKAGES ]]; then
+
+    PATH="$NPM_PACKAGES/bin:$PATH"
+
+    # Unset manpath so we can inherit from /etc/manpath via the `manpath`
+    # command
+    unset MANPATH # delete if you already modified MANPATH elsewhere
+
+    MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+fi
+

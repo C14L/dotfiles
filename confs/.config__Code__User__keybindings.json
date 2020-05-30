@@ -1,0 +1,51 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {"key": "alt+h", "command": "cursorLeft", "when": "textInputFocus"},
+    {"key": "alt+shift+h", "command": "cursorLeftSelect", "when": "textInputFocus"},
+    {"key": "alt+ctrl+h", "command": "cursorWordLeft", "when": "textInputFocus"},
+    {"key": "alt+shift+ctrl+h", "command": "cursorWordLeftSelect", "when": "textInputFocus"},
+
+    {"key": "alt+j", "command": "cursorDown", "when": "textInputFocus"},
+    {"key": "alt+j", "command": "list.focusDown", "when": "filesExplorerFocus && !inputFocus"},
+    {"key": "alt+shift+j", "command": "cursorDownSelect", "when": "textInputFocus"},
+    {"key": "alt+ctrl+j", "command": "editor.action.moveLinesDownAction", "when": "textInputFocus"},
+    {"key": "alt+shift+ctrl+j", "command": "editor.action.copyLinesDownAction", "when": "textInputFocus"},
+
+    {"key": "alt+k", "command": "cursorUp", "when": "textInputFocus"},
+    {"key": "alt+k", "command": "list.focusUp", "when": "filesExplorerFocus && !inputFocus"},
+    {"key": "alt+shift+k", "command": "cursorUpSelect", "when": "textInputFocus"},
+    {"key": "alt+ctrl+k", "command": "editor.action.moveLinesUpAction", "when": "textInputFocus"},
+    {"key": "alt+shift+ctrl+k", "command": "editor.action.copyLinesUpAction", "when": "textInputFocus"},
+
+    {"key": "alt+l", "command": "cursorRight", "when": "textInputFocus"},
+    {"key": "alt+l", "command": "workbench.action.focusFirstEditorGroup", "when": "filesExplorerFocus"},
+    {"key": "alt+shift+l", "command": "cursorRightSelect", "when": "textInputFocus"},
+    {"key": "alt+ctrl+l", "command": "cursorWordRight", "when": "textInputFocus"},
+    {"key": "alt+shift+ctrl+l", "command": "cursorWordRightSelect", "when": "textInputFocus"},
+
+    {"key": "alt+;", "command": "cursorEnd", "when": "textInputFocus"},
+
+    // {"key": "ctrl+shift+e", "command": "workbench.view.explorer", "when": "textInputFocus"},
+    // {"key": "alt+enter", "command": "", "when": "breakpointsFocused"},
+    // {"key": "ctrl+enter", "command": "", "when": "breakpointsFocused"},
+    // {"key": "ctrl+k ctrl+right", "command": ""},
+    // {"key": "ctrl+k ctrl+left", "command": ""},
+
+    {"key": "ctrl+alt+-", "command": "-workbench.action.navigateBack"},
+    {"key": "ctrl+alt+left", "command": "workbench.action.navigateBack"},
+
+    {"key": "ctrl+shift+-", "command": "-workbench.action.navigateForward"},
+    {"key": "ctrl+alt+right", "command": "workbench.action.navigateForward"},
+
+    {"key": "alt+left", "command": "workbench.action.focusPreviousGroup"},
+    {"key": "alt+right", "command": "workbench.action.focusNextGroup"},
+    {"key": "ctrl+shift+alt+left", "command": "workbench.action.moveEditorToPreviousGroup"},
+    {"key": "ctrl+shift+alt+right", "command": "workbench.action.moveEditorToNextGroup"},
+
+    {"key": "ctrl+shift+w", "command": "-workbench.action.closeWindow"},
+    {"key": "ctrl+q", "command": "-workbench.action.quit"},
+    {"key": "ctrl+f4", "command": "workbench.action.quit"},
+
+    {"key": "ctrl+s", "command": "-workbench.action.files.save"},
+    {"key": "ctrl+s", "command": "workbench.action.files.saveAll"}
+]

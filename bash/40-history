@@ -1,0 +1,34 @@
+##############################################################################
+# Bash history settings
+##############################################################################
+
+# Don't put duplicate lines or lines starting with space in the history.
+HISTCONTROL=ignoreboth
+
+# Append to the history file, don't overwrite it
+shopt -s histappend
+
+# When doing !! to repeat last command, first verify the command.
+shopt -s histverify
+
+# For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000000
+HISTFILESIZE=20000000
+
+
+# Eternal bash history.
+# Undocumented feature which sets the size to "unlimited".
+# http://stackoverflow.com/questions/9457233/unlimited-bash-history
+##export HISTSIZE="No numeric value means no 'stifled' history."
+##export HISTFILESIZE="No numeric value here either."
+
+# Add a timstamp to each history entry
+HISTTIMEFORMAT="[%F %T] "
+
+# Change the file location because certain bash sessions truncate
+# .bash_history file upon close: http://superuser.com/questions/575479/
+HISTFILE=~/.bash_history_eternal
+
+# Force prompt to write history after every command.
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a"
+

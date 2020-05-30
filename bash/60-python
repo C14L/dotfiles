@@ -1,0 +1,10 @@
+##############################################################################
+# Python
+##############################################################################
+
+# Tell Python not to generate .pyc files
+export PYTHONDONTWRITEBYTECODE=True
+
+# Always use utf-8
+export PYTHONIOENCODING="UTF-8";
+

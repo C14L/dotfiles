@@ -1,0 +1,100 @@
+# ---------------------------------------------------------
+#
+# Global ".gitignore" file.
+#
+# Setup glit to use this file with:
+#   git config --global core.excludesfile '~/.gitignore'
+#
+# ---------------------------------------------------------
+
+#
+# Rust
+#
+**/target/
+
+#
+# Specific files
+#
+google*.html
+MJ12_*.txt
+BingSiteAuth.xml
+yandex_*.html
+
+#
+# Ignore common Virtualenvs, libs, tools, etc.
+#
+**/dist/
+**/venv/
+**/bower_components/
+**/node_modules/
+**/jspm_packages/
+
+#
+# Python and Django
+#
+__pycache__/
+**/*.pyc
+
+# Ignore editors directories.
+.idea/
+.vscode/
+.DS_Store/
+*.kdev4
+
+#
+# Ignore /libs/, and /ng-app/libs/ and /blah/bower_libs/ etc.
+#
+**/libs/
+
+#
+# Ignore files.
+#
+OLD_*
+PRIVATE_*
+*_private.py
+*.private.py
+!*_private.py.gpg
+!*.private.py.gpg
+*.sublime-project
+*.sublime-workspace
+*~
+*.bak
+*.backup
+*.tar
+*.tar.gz
+*.tgz
+*.bz2
+*.bz
+*.zip
+*.7z
+# *.[gG][iI][fF]
+# *.[jJ][pP][gG]
+# *.[jJ][pP][eE][gG]
+*.[bB][mM][pP]
+# *.[iI][cC][oO]
+# *.[pP][nN][gG]
+*.[wW][eE][bB][mM]
+*.[aA][vV][iI]
+*.[mM][pP][gG]
+*.[mM][pP][eE][gG]
+*.xcf
+*.ttf
+*.err
+*.log
+*.mo
+*.pot
+*.mo
+*.svg
+*.mpg
+*.avi
+*.fla
+*.flv
+*.swf
+*.sqlite3*
+*.pyc
+*.[dD][bB]
+*.swo
+*.swp
+.doit*
+*.woff
+
