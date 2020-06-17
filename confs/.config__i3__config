@@ -2,7 +2,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set_from_resource $dotfiles echo "$DOTFILES_DIR"
+set $dotfiles /home/chris/dotfiles2
 
 focus_follows_mouse no
 
@@ -113,10 +113,10 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec dmenu_run
 
 # dmenu for bash history entries (trivial entries are removed from selection)
-bindsym $mod+y exec ~/$dotfiles/scripts/dmenu-history.sh
+bindsym $mod+y exec $dotfiles/scripts/dmenu-history.sh
 
 # dmenu for display setup (uses "display-setup-*.sh" files)
-bindsym $mod+shift+d exec ~/$dotfiles/scripts/dmenu-display-setup.sh
+bindsym $mod+shift+d exec $dotfiles/scripts/dmenu-display-setup.sh
 
 # change focus
 bindsym $mod+h focus left
@@ -192,9 +192,9 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Lock the screen (also see below: $mod+ctrl+shift+q for options to quit i3)
-bindsym Pause exec i3lock -i ~/$dotfiles/pics/lockscreen/think-different.png -t -c 222222 -e -f
-bindsym $mod+Escape exec i3lock -i ~/$dotfiles/pics/lockscreen/think-different.png -t -c 222222 -e -f
-bindsym $mod+Pause exec i3lock -i ~/$dotfiles/pics/lockscreen/think-different.png -t -c 222222 -e -f
+bindsym Pause exec i3lock -i $dotfiles/pics/lockscreen/think-different.png -t -c 222222 -e -f
+bindsym $mod+Escape exec i3lock -i $dotfiles/pics/lockscreen/think-different.png -t -c 222222 -e -f
+bindsym $mod+Pause exec i3lock -i $dotfiles/pics/lockscreen/think-different.png -t -c 222222 -e -f
 
 #bindsym $mod+Escape exec ~/$dotfiles/scripts/set-lockscreen-blury.sh
 #bindsym $mod+Pause exec ~/$dotfiles/scripts/set-lockscreen-random.sh
@@ -202,9 +202,9 @@ bindsym $mod+Pause exec i3lock -i ~/$dotfiles/pics/lockscreen/think-different.pn
 bindsym $mod+Shift+Pause exec i3lock && systemctl suspend
 bindsym $mod+Shift+Escape exec i3lock && systemctl suspend
 
-exec xautolock -time 15 -locker ~/$dotfiles/scripts/set-lockscreen-blury.sh
+exec xautolock -time 15 -locker $dotfiles/scripts/set-lockscreen-blury.sh
 
-bindsym $mod+b exec ~/$dotfiles/scripts/set-background-image.sh
+bindsym $mod+b exec $dotfiles/scripts/set-background-image.sh
 
 # Reload config file or restart i3 in-place
 bindsym $mod+Shift+r reload
@@ -240,7 +240,7 @@ bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 #bindsym XF86MonBrightnessDown exec "xbacklight -dec 20"
 
 # Touchpad controls
-bindsym XF86TouchpadToggle exec ~/.config/i3/touchpad-toggle.sh
+bindsym XF86TouchpadToggle exec $dotfiles/scripts/touchpad-toggle.sh
 
 # Media player controls
 #bindsym XF86AudioPlay exec "playerctl play"
@@ -351,15 +351,15 @@ set $displayBrightness \
     "Set brightness from [1] dark to [9] bright"
 bindsym $mod+shift+b mode $displayBrightness
 mode $displayBrightness {
-    bindsym 1 exec "~/$dotfiles/scripts/set-screen-brightness.sh 1"; mode "default"
-    bindsym 2 exec "~/$dotfiles/scripts/set-screen-brightness.sh 2"; mode "default"
-    bindsym 3 exec "~/$dotfiles/scripts/set-screen-brightness.sh 3"; mode "default"
-    bindsym 4 exec "~/$dotfiles/scripts/set-screen-brightness.sh 4"; mode "default"
-    bindsym 5 exec "~/$dotfiles/scripts/set-screen-brightness.sh 5"; mode "default"
-    bindsym 6 exec "~/$dotfiles/scripts/set-screen-brightness.sh 6"; mode "default"
-    bindsym 7 exec "~/$dotfiles/scripts/set-screen-brightness.sh 7"; mode "default"
-    bindsym 8 exec "~/$dotfiles/scripts/set-screen-brightness.sh 8"; mode "default"
-    bindsym 9 exec "~/$dotfiles/scripts/set-screen-brightness.sh 9"; mode "default"
+    bindsym 1 exec "$dotfiles/scripts/set-screen-brightness.sh 1"; mode "default"
+    bindsym 2 exec "$dotfiles/scripts/set-screen-brightness.sh 2"; mode "default"
+    bindsym 3 exec "$dotfiles/scripts/set-screen-brightness.sh 3"; mode "default"
+    bindsym 4 exec "$dotfiles/scripts/set-screen-brightness.sh 4"; mode "default"
+    bindsym 5 exec "$dotfiles/scripts/set-screen-brightness.sh 5"; mode "default"
+    bindsym 6 exec "$dotfiles/scripts/set-screen-brightness.sh 6"; mode "default"
+    bindsym 7 exec "$dotfiles/scripts/set-screen-brightness.sh 7"; mode "default"
+    bindsym 8 exec "$dotfiles/scripts/set-screen-brightness.sh 8"; mode "default"
+    bindsym 9 exec "$dotfiles/scripts/set-screen-brightness.sh 9"; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -410,7 +410,7 @@ bar {
 ###############################################################################
 
 
-exec_always --no-startup-id ~/$dotfiles/scripts/set-background-image.sh
+exec_always --no-startup-id $dotfiles/scripts/set-background-image.sh
 
 # Set up dual-screen if they are connected.
 #exec_always --no-startup-id screen-setup.sh --> FIXME
