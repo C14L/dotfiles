@@ -32,7 +32,7 @@ yandex_*.html
 #
 # Python and Django
 #
-__pycache__/
+**/__pycache__
 **/*.pyc
 
 # Ignore editors directories.
@@ -51,6 +51,7 @@ __pycache__/
 #
 OLD_*
 PRIVATE_*
+.private.*
 *_private.py
 *.private.py
 !*_private.py.gpg
