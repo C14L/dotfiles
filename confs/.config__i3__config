@@ -15,31 +15,17 @@ client.focused_inactive #4c7899 #555555 #888888 #4c7899
 client.unfocused        #222222 #222222 #888888 #4c7899
 client.urgent           #00ff00 #ff0000 #ffffff #900000
 
-#client.focused          #000000 #000000 #cccccc #282a2e
-#client.focused_inactive #000000 #000000 #999999 #282a2e
-#client.unfocused        #000000 #000000 #666666 #282a2e
-#client.urgent           #00ff00 #ff0000 #ffffff #900000
-
 # Hide window borders on maximized windows
 # hide_edge_borders none|vertical|horizontal|both|smart
 hide_edge_borders none
 for_window [title=".*"] border pixel 3
-#for_window [title="^Alacritty.*"] border pixel 3
-#for_window [title="^Terminal$"] border pixel 3
-#for_window [title=".* Mozilla Firefox$"] border pixel 3
-#for_window [title=".* Google Chrome$"] border pixel 3
-#for_window [title=".* - Brave$"] border pixel 3
-#for_window [title=".* - Chromium$"] border pixel 3
 for_window [title="^tmux .*"] border pixel 0
 
 # Force certain programs on certain desktops.
-#for_window [class="VirtualBox"] floating enable, move container to workspace $ws8
-#for_window [class="VirtualBox" title="\[Running\] \- Oracle VM VirtualBox$"] resize set 1024 px 768 px
 for_window [title="^.*pavucontrol.*$"] floating enable
 for_window [class="Eog"] floating enable
 for_window [title="^ImageMagick.*$"] floating enable
 for_window [title="^Cheese.*$"] floating enable
-
 
 # title_align left|center|right
 #title_align center
@@ -50,7 +36,6 @@ for_window [title="^Cheese.*$"] floating enable
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:ubuntu mono 12
-#font pango:DejaVu Sans Mono 16
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -58,7 +43,6 @@ font pango:ubuntu mono 12
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
-
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -221,51 +205,18 @@ bindsym $mod+Ctrl+r restart
 ###############################################################################
 
 
-# Pulse audio mixer
-#bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+'"
-#bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-'"
-#bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
-
 # Pulse audio controls
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5% &"
 bindsym XF86AudioLowerVolume exec "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5% &"
 bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 
-# brightness control, backlight, xbacklight
-#bindsym $mod+Shift+Page_Down exec xbacklight -dec 5
-#bindsym $mod+Shift+Page_Up exec xbacklight -inc 5
-
-# Screen brightness controls
-#bindsym XF86MonBrightnessUp exec "xbacklight -inc 20"
-#bindsym XF86MonBrightnessDown exec "xbacklight -dec 20"
-
 # Touchpad controls
 bindsym XF86TouchpadToggle exec $dotfiles/scripts/touchpad-toggle.sh
 
-# Media player controls
-#bindsym XF86AudioPlay exec "playerctl play"
-#bindsym XF86AudioPause exec "playerctl pause"
-#bindsym XF86AudioNext exec "playerctl next"
-#bindsym XF86AudioPrev exec "playerctl previous"
-
 # Totem Media Player controls
 bindsym XF86AudioPlay exec totem --play-pause
-#bindsym XF86AudioPause exec totem --pause
 bindsym XF86AudioNext exec totem --seek-fwd
 bindsym XF86AudioPrev exec totem --seek-bwd
-
-#XF86AudioMute
-#XF86AudioLowerVolume
-#XF86AudioRaiseVolume
-#XF86AudioMicMute
-#XF86MonBrightnessDown
-#XF86MonBrightnessUp
-#XF86Display
-#XF86WLAN
-#XF86Tools
-#XF86Search
-#XF86LaunchA
-#XF86Explorer
 
 
 ###############################################################################
@@ -274,25 +225,9 @@ bindsym XF86AudioPrev exec totem --seek-bwd
 #
 ###############################################################################
 
-# printscreen - currently active screen only
-bindsym Print exec scrot -z \
-    -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/ && notify-send --icon=gtk-info Screenshot "Screenshot of active screen saved to: ~/Pictures/Screenshots/$f"' \
-    '%Y-%m-%d_%H-%M-%S_$wx$h.png'
 
-# printscreen - all screens m=multi-display
-bindsym $mod+Print exec scrot -z -m \
-    -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/ && notify-send --icon=gtk-info Screenshot "Screenshot of all screens saved to: ~/Pictures/Screenshots/$f"' \
-    '%Y-%m-%d_%H-%M-%S_$wx$h.png'
+bindsym Print exec gnome-screenshot --clipboard --area --include-pointer --interactive
 
-# printscreen: focused window only
-bindsym $mod+Shift+Print exec scrot -z -u \
-    -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/ && notify-send --icon=gtk-info Screenshot "Screenshot of focused window saved to: ~/Pictures/Screenshots/$f"' \
-    '%Y-%m-%d_%H-%M-%S_$wx$h.png'
-
-# printscreen: select area manually
-bindsym $mod+Ctrl+Print exec scrot -z -s \
-    -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/ && notify-send --icon=gtk-info Screenshot "Screenshot of focused window saved to: ~/Pictures/Screenshots/$f"' \
-    '%Y-%m-%d_%H-%M-%S_$wx$h.png'
 
 ###############################################################################
 #
@@ -364,16 +299,17 @@ mode $displayBrightness {
     bindsym Escape mode "default"
 }
 
+
 ###############################################################################
 #
 #   Desktop layout settings
 #
 ###############################################################################
 
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    #status_command i3status --config ~/.config/i3/i3status.conf
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     position top
     tray_output primary
@@ -389,16 +325,6 @@ bar {
         inactive_workspace #000000 #000000 #888888
         urgent_workspace   #ff0000 #ff0000 #ffffff
         binding_mode       #ff0000 #ff0000 #ffffff
-
-		# Defaults:
-        #background #000000
-        #statusline #ffffff
-        #separator #666666
-        #focused_workspace  #4c7899 #285577 #ffffff
-        #active_workspace   #333333 #5f676a #ffffff
-        #inactive_workspace #333333 #222222 #888888
-        #urgent_workspace   #2f343a #900000 #ffffff
-        #binding_mode       #2f343a #900000 #ffffff
     }
 }
 
@@ -412,16 +338,12 @@ bar {
 
 exec_always --no-startup-id $dotfiles/scripts/set-background-image.sh
 
-# Set up dual-screen if they are connected.
-#exec_always --no-startup-id screen-setup.sh --> FIXME
-
 # Start network manager applet always.
 exec_always nm-applet
 
 # Sound
 exec --no-startup-id gnome-sound-applet
 exec pulseaudio --start
-#exec amixer sset Master 20%
 
 # See `man xkeyboard-config` for details
 #
