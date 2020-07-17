@@ -13,7 +13,7 @@
 "python.linting.pylintArgs": ["--enable=python3"],
 "editor.fontFamily": "'Ubuntu Mono'",
 "editor.links": false,
-"editor.minimap.enabled": true,
+"editor.minimap.enabled": false,
 "editor.renderWhitespace": "none",
 "editor.rulers": [88],
 "files.exclude": {
@@ -43,7 +43,7 @@
 "explorer.confirmDragAndDrop": false,
 "editor.cursorSmoothCaretAnimation": true,
 "dart.closingLabels": false,
-"workbench.activityBar.visible": false,
+"workbench.activityBar.visible": true,
 "editor.fontSize": 18,
 "editor.lineHeight": 24,
 "python.formatting.provider": "black",
@@ -62,5 +62,6 @@
 "update.mode": "none",
 "window.customMenuBarAltFocus": false,
 "debug.allowBreakpointsEverywhere": true,
-"rust-analyzer.inlayHints.enable": false
+"rust-analyzer.inlayHints.enable": false,
+"python.languageServer": "Microsoft"
 }
