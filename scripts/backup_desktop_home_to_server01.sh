@@ -51,6 +51,7 @@ rsync -avP --delete \
     --exclude=".ccache/" \
     --exclude=".cargo/" \
     --exclude=".config/google-chrome/" \
+    --exclude=".debug/" \
     --exclude=".dbus" \
     --exclude=".debug/" \
     --exclude=".gradle/" \
@@ -79,7 +80,7 @@ fi
 
 echo
 echo "Uploading encfs encrypted directory to remote 'server01'..."
-rsync -avP "$ENCFS_CRYPT" "$SRV"
+rsync -avP --delete "$ENCFS_CRYPT" "$SRV"
 
 echo "Done."
 

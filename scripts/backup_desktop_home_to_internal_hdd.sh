@@ -28,6 +28,7 @@ rsync -avP --delete \
     --exclude=.cache/ \
     --exclude=.ccache/ \
     --exclude=.cargo/ \
+    --exclude=.debug/ \
     --exclude=.rustup/ \
     --exclude=.gradle/ \
     --exclude=.dart/ \
