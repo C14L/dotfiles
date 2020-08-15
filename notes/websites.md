@@ -2,9 +2,8 @@ Move to server01
 ================
 3dir.com            | server01 done, no tls
 antrito.com         | server01 done, no tls
-beijing-china.de    | dropped
-c14l.com            |
-china9.de           | server01 ready, TODO: domain not moved, certs not installed
+c14l.com            | server01 done, with tls, TODO: fix nginx
+china9.de           | server01 ready, TODO: domain not moved
 cn8.eu              | server01 done, no tls
 elligue.com         | server01 done, with tls
 forumchina.de       | server01 done, with tls
@@ -14,10 +13,10 @@ hainan-china.de     | server01 done, with tls
 hongkong-china.de   | server01 done, no tls
 messen-kalender.de  | server01 done, with tls
 natursteinkueche.de | server01 done, no tls
-paulrich.net        | todo: move data to C14L directory and drop
+paulrich.net        | TODO: move to C14L dir and drop domain
 peking-china.de     | server01 done, with tls
-redddate.com        | server01 partly ready, dns started, TODO: certs
-reddmeet.com        | server01 partly ready, dns started, TODO: certs
+redddate.com        | server01 done, with tls
+reddmeet.com        | server01 done, with tls
 shanghai-china.de   | server01 done, with tls
 tibet-china.de      | server01 done, with tls
 vpn-hilfe.de        | server01 done, with tls
