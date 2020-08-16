@@ -61,7 +61,8 @@ rsync -avP --delete \
     --exclude=".PyCharm*/system/log" \
     --exclude=.android/ \
     --exclude=.thumbnails/ \
-    --exclude=snap \
+    --exclude=snap/ \
+    --exclude=venv/ \
     --exclude="**/target/debug/" \
     --exclude="**/target/rls/" \
     "$SRC" "$TRG/" > $TMPF
