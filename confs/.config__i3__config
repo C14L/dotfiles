@@ -26,6 +26,7 @@ for_window [title="^.*pavucontrol.*$"] floating enable
 for_window [class="Eog"] floating enable
 for_window [title="^ImageMagick.*$"] floating enable
 for_window [title="^Cheese.*$"] floating enable
+for_window [class="^floating_.*$"] floating enable
 
 # title_align left|center|right
 #title_align center
@@ -85,6 +86,10 @@ bindsym $mod+Ctrl+w exec chromium-browser
 #bindsym $mod+Mod1+w exec brave-browser
 #bindsym $mod+Mod5+w exec brave-browser
 
+# Show Unicode Symbols table as floating window to quickly copy/paste from
+bindsym $mod+s exec gnome-characters --class=floating_gnome_characters
+
+# Simple text only editor to type stuff
 bindsym $mod+z exec leafpad
 bindsym $mod+Shift+z exec leafpad ~/.mytodo
 
@@ -132,7 +137,7 @@ bindsym $mod+e split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, panels)
-bindsym $mod+s layout stacking
+#bindsym $mod+s layout stacking  --> re-used for Unicode Symbols
 bindsym $mod+t layout tabbed
 bindsym $mod+p layout toggle split
 # toggle tiling / floating
