@@ -205,10 +205,14 @@ bindsym $mod+Ctrl+r restart
 ###############################################################################
 
 
-# Pulse audio controls
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5% &"
-bindsym XF86AudioLowerVolume exec "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5% &"
-bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
+# Pulse audio controls (Prior==PageUp, Next==PageDown)
+bindsym $mod+Prior exec "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5% &"
+bindsym $mod+Next exec "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5% &"
+bindsym $mod+BackSpace exec "pactl set-sink-mute 0 toggle"
+
+#bindsym XF86AudioRaiseVolume exec "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5% &"
+#bindsym XF86AudioLowerVolume exec "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5% &"
+#bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 
 # Touchpad controls
 bindsym XF86TouchpadToggle exec $dotfiles/scripts/touchpad-toggle.sh
@@ -280,10 +284,9 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# Set display brightness
-# FIXME: Doesn't play well with "redshift"!
-set $displayBrightness \
-    "Set brightness from [1] dark to [9] bright"
+
+# Set display brightness: Only works with no redshift process in the background
+set $displayBrightness "Set brightness from [1] dark to [9] bright"
 bindsym $mod+shift+b mode $displayBrightness
 mode $displayBrightness {
     bindsym 1 exec "$dotfiles/scripts/set-screen-brightness.sh 1"; mode "default"

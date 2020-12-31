@@ -63,6 +63,6 @@
 "window.customMenuBarAltFocus": false,
 "debug.allowBreakpointsEverywhere": true,
 "rust-analyzer.inlayHints.enable": false,
-"python.languageServer": "Microsoft",
+"python.languageServer": "Pylance",
 "java.semanticHighlighting.enabled": true
 }
