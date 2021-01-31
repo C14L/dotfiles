@@ -17,8 +17,8 @@ client.urgent           #00ff00 #ff0000 #ffffff #900000
 
 # Hide window borders on maximized windows
 # hide_edge_borders none|vertical|horizontal|both|smart
-hide_edge_borders none
-for_window [title=".*"] border pixel 3
+hide_edge_borders smart
+for_window [title=".*"] border pixel 1
 for_window [title="^tmux .*"] border pixel 0
 
 # Force certain programs on certain desktops.
