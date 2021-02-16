@@ -69,6 +69,7 @@ alias myip=' \
 
 alias v874="ssh $V874"
 alias server01="ssh $SERVER01"
+alias netbook01="ssh $NETBOOK01"
 
 ##############################################################################
 # Mount and unmount encfs encrypted ~/Documents/Private_encfs on ~/Private:

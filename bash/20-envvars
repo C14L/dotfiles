@@ -12,7 +12,8 @@ export WORKON_HOME=~/venv
 export V874=$(cat ~/.login_v874)
 export SERVER01=$(cat ~/.login_server01)
 export RASPI01=$(cat ~/.login_raspi01)
-export RASPI03=$(cat ~/.login_raspi03)
+export RASPI01=$(cat ~/.login_raspi01)
+export NETBOOK01=$(cat ~/.login_netbook01)
 
 # Mark this as dev box
 export DEVBOX=1
