@@ -27,13 +27,17 @@ echo "  $(lsb_release -ds) ($XDG_SESSION_TYPE) $(uptime -p)"
 echo
 echo "  $HOME    $(df -h --output=used,size,pcent ~ |\
     tail -n1 | sed -E 's/([0-9%]+)$/(\1 used)/')"
-echo -e $COLOR_BLUE
-echo "  IPv6:  $(/usr/share/i3blocks/iface -6 | head -n1)"
-echo "  IPv4:  $(/usr/share/i3blocks/iface -4 | head -n1)"
-echo -e $COLOR_YELLOW
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-touch "$TODOFILE" && cat "$TODOFILE" | grep -v '^$' | shuf | tail -n3 | sed 's/^/  > /'
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+if [ -f /usr/share/i3blocks/iface ]; then
+  echo -e $COLOR_BLUE
+  echo "  IPv6:  $(/usr/share/i3blocks/iface -6 | head -n1)"
+  echo "  IPv4:  $(/usr/share/i3blocks/iface -4 | head -n1)"
+fi
+if [ -s $TODOFILE ]; then
+  echo -e $COLOR_YELLOW
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  cat "$TODOFILE" | grep -v '^$' | shuf | tail -n3 | sed 's/^/  > /'
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+fi
 echo -e $COLOR_NONE
 ##############################################################################
 
