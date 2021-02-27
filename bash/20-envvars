@@ -9,11 +9,11 @@ export PATH="$PATH:$DOTFILES_DIR/scripts"
 export WORKON_HOME=~/venv
 
 # Servers
-export V874=$(cat ~/.login_v874)
-export SERVER01=$(cat ~/.login_server01)
-export RASPI01=$(cat ~/.login_raspi01)
-export RASPI01=$(cat ~/.login_raspi01)
-export NETBOOK01=$(cat ~/.login_netbook01)
+if [ -f ~/.login_v874 ]; then export V874=$(cat ~/.login_v874); fi
+if [ -f ~/.login_server01 ]; then export SERVER01=$(cat ~/.login_server01); fi
+if [ -f ~/.login_raspi01 ]; then export RASPI01=$(cat ~/.login_raspi01); fi
+if [ -f ~/.login_raspi02 ]; then export RASPI01=$(cat ~/.login_raspi02); fi
+if [ -f ~/.login_netbook01 ]; then export NETBOOK01=$(cat ~/.login_netbook01); fi
 
 # Mark this as dev box
 export DEVBOX=1
@@ -27,5 +27,5 @@ export SNIPSFILE="$HOME/.snips"
 export TODOFILE="$HOME/.todo"
 
 # Set default editor
-export EDITOR="nvim -u ~/.vimrc"
+if [ `which nvim` ]; then export EDITOR="nvim -u ~/.vimrc"; fi
 
