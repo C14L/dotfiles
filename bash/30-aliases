@@ -5,7 +5,13 @@
 alias lll='ls -lah'
 alias e='leafpad'
 alias o="xdg-open"
-alias v="nvim -u ~/.vimrc"; alias vi="nvim -u ~/.vimrc"; alias vim="nvim -u ~/.vimrc"
+
+if [ `which nvim` ]; then
+ alias v="nvim -u ~/.vimrc"
+ alias vi="nvim -u ~/.vimrc"
+ alias vim="nvim -u ~/.vimrc"
+fi
+
 alias vs="code -n ."
 alias wetter="curl wttr.in/karlsruhe"
 alias todo="cat $TODOFILE"
