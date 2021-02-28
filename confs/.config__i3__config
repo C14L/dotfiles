@@ -80,8 +80,8 @@ bindsym $mod+Shift+Return exec /usr/bin/alacritty --no-live-config-reload -qq -e
 bindsym $mod+Ctrl+Return exec /usr/bin/gnome-terminal -q
 
 # Mod1: Alt_L ; Mod5: Alt_R
-bindsym $mod+w exec vivaldi
-#bindsym $mod+Shift+w exec google-chrome
+bindsym $mod+w exec brave
+bindsym $mod+Shift+w exec vivaldi
 bindsym $mod+Ctrl+w exec chromium-browser
 #bindsym $mod+Mod1+w exec brave-browser
 #bindsym $mod+Mod5+w exec brave-browser
