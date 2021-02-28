@@ -32,6 +32,7 @@ sudo apt install --yes gnome-tweak-tool
 sudo apt install --yes hexedit
 sudo apt install --yes htop
 sudo apt install --yes httpie
+sudo apt install --yes imagemagick
 sudo apt install --yes idn
 sudo apt install --yes jq
 sudo apt install --yes keepassxc
