@@ -2,7 +2,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $dotfiles /home/chris/dotfiles2
+set $dotfiles /home/chris/dotfiles
 
 focus_follows_mouse no
 
