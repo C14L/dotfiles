@@ -17,3 +17,6 @@ sudo apt install --yes wireless-tools
 sudo apt install --yes fonts-hack # Hack font
 
 sudo apt install --yes light # display brightness control via shell
+
+sudo apt install --yes smartmontools # use: sudo smartctl --all /dev/sda
+

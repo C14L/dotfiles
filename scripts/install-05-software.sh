@@ -86,3 +86,7 @@ sudo apt install --yes curl
 
 sudo apt install --yes unrar zip unzip p7zip-full p7zip-rar
 
+sudo apt install --yes virtualbox virtualbox-guest-additions-iso
+
+sudo apt install --yes python-is-python3
+
