@@ -12,7 +12,7 @@ export WORKON_HOME=~/venv
 if [ -f ~/.login_v874 ]; then export V874=$(cat ~/.login_v874); fi
 if [ -f ~/.login_server01 ]; then export SERVER01=$(cat ~/.login_server01); fi
 if [ -f ~/.login_raspi01 ]; then export RASPI01=$(cat ~/.login_raspi01); fi
-if [ -f ~/.login_raspi02 ]; then export RASPI01=$(cat ~/.login_raspi02); fi
+if [ -f ~/.login_raspi02 ]; then export RASPI02=$(cat ~/.login_raspi02); fi
 if [ -f ~/.login_netbook01 ]; then export NETBOOK01=$(cat ~/.login_netbook01); fi
 
 # Mark this as dev box
