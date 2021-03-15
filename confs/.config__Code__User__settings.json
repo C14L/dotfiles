@@ -48,10 +48,11 @@
 "editor.lineHeight": 24,
 "python.formatting.provider": "black",
 "python.formatting.yapfPath": "yapfautopep8",
-"files.associations": {"*.html": "html"},
-"workbench.colorTheme": "Base16 Dark Bright",
+"files.associations": {
+    "*.html": "html"
+},
 "python.testing.autoTestDiscoverOnSaveEnabled": false,
-"window.menuBarVisibility": "visible",
+"window.menuBarVisibility": "toggle",
 "files.autoSave": "off",
 "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
@@ -64,5 +65,12 @@
 "debug.allowBreakpointsEverywhere": true,
 "rust-analyzer.inlayHints.enable": false,
 "python.languageServer": "Pylance",
-"java.semanticHighlighting.enabled": true
+"java.semanticHighlighting.enabled": true,
+"workbench.colorTheme": "Base16 Dark 3024",
+"workbench.editorAssociations": [
+    {
+        "viewType": "jupyter.notebook.ipynb",
+        "filenamePattern": "*.ipynb"
+    }
+]
 }
