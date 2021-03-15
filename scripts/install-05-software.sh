@@ -90,3 +90,7 @@ sudo apt install --yes virtualbox virtualbox-guest-additions-iso
 
 sudo apt install --yes python-is-python3
 
+sudo apt install --yes apache2-utils  # ab
+
+sudo apt install --yes libsqlite3-dev sqlite3
+

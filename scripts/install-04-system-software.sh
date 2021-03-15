@@ -20,3 +20,5 @@ sudo apt install --yes light # display brightness control via shell
 
 sudo apt install --yes smartmontools # use: sudo smartctl --all /dev/sda
 
+sudo apt install --yes gir1.2-appindicator3-0.1  # Gnome-shell taskbar icons
+
