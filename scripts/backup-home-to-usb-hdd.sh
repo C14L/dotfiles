@@ -6,7 +6,7 @@ LOGFILE="/tmp/$SUBDIR.log"
 
 SRC="$HOME"
 
-TRG="/media/chris/SD128GB/$SUBDIR"
+TRG="/media/chris/WD4TB/$SUBDIR"
 
 echo "Backup from: $SRC"
 echo "Writing  to: $TRG/"
@@ -57,6 +57,7 @@ rsync -avP --delete                     \
     --exclude="**/target/rls/"          \
     "$SRC" "$TRG/" > $LOGFILE
 
+touch "$TRG"
 echo
 echo "Done."
 echo
