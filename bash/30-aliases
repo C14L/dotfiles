@@ -24,7 +24,7 @@ alias f="touch $SNIPSFILE && cat $SNIPSFILE | fzf | tr -d '\n' | xclip -selectio
 alias h="history | grep -Pv '(tmux|fg|bg|reset|vim|vi|nvim|v|f|j|vs|code -n|python|python3|tig|git status|git push|git diff --staged|git diff|git add \.|ls -la|lll|ll|ls|df -h|du -hs|hist|cd.?|cd ..|cd ~|exit?|date)$' | fzf --reverse --border --margin=0 --height=15 --color=light,bg+:6 | cut -d']' -f2 | sed 's/^ //' | tr -d '\n' | xclip -selection clipboard"
 
 # Generate a random 128 Bytes password, prepend a repeating string, and put it in the clipboard
-alias passwdgen='echo -n "zzzzz$(tr -dc [:alnum:][:punct:] </dev/urandom | head -c128)" | xclip -selection clipboard >/dev/null'
+alias passwdgen_yourself='echo -n "zzzzz$(tr -dc [:alnum:][:punct:] </dev/urandom | head -c128)" | xclip -selection clipboard >/dev/null'
 
 # Web search on DDG
 function ddg {
