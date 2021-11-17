@@ -13,7 +13,6 @@
 "python.linting.pylintArgs": ["--enable=python3"],
 "editor.fontFamily": "'Ubuntu Mono'",
 "editor.links": false,
-"editor.minimap.enabled": false,
 "editor.renderWhitespace": "none",
 "editor.rulers": [88],
 "files.exclude": {
@@ -67,10 +66,11 @@
 "python.languageServer": "Pylance",
 "java.semanticHighlighting.enabled": true,
 "workbench.colorTheme": "Base16 Dark 3024",
-"workbench.editorAssociations": [
-    {
-        "viewType": "jupyter.notebook.ipynb",
-        "filenamePattern": "*.ipynb"
-    }
-]
+"workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+},
+"notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+}
 }
