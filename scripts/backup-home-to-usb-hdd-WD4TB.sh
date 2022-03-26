@@ -1,12 +1,12 @@
 #!/bin/bash
 
-SUBDIR="backup-$(hostname)"
+SUBDIR="backup-$(hostname)-mount"
 
 LOGFILE="/tmp/$SUBDIR.log"
 
 SRC="$HOME"
 
-TRG="/media/chris/WD4TB/$SUBDIR"
+TRG="/WD4TB/$SUBDIR"
 
 echo "Backup from: $SRC"
 echo "Writing  to: $TRG/"
@@ -19,42 +19,40 @@ echo
 
 mkdir -p "$TRG"
 
-rsync -avP --delete                     \
-    --exclude=".android/"               \
-    --exclude=".cache/"                 \
-    --exclude=".cargo/"                 \
-    --exclude=".dbus"                   \
-    --exclude=".debug/"                 \
-    --exclude=".gradle/"                \
-    --exclude=".dart/"                  \
-    --exclude=".dartServer/"            \
-    --exclude=".local/share/Trash/"     \
-    --exclude=".local/share/Steam/"     \
-    --exclude=".npm/"                   \
-    --exclude=".npm-packages/"          \
-    --exclude=".rustup/"                \
-    --exclude=".thumbnails/"            \
-    --exclude=".AndroidStudio*"         \
-    --exclude=".PyCharm*/system/caches" \
-    --exclude=".PyCharm*/system/log"    \
-    --exclude="Android/"                \
-    --exclude="snap/"                   \
-    --exclude="Memes/"                  \
-    --exclude="Random/"                 \
-    --exclude="Repos/"                  \
-    --exclude="RetroVirtualMachines/"   \
-    --exclude="Server/"                 \
-    --exclude="Software/"               \
-    --exclude="Videos/"                 \
-    --exclude="**/Cache*"               \
-    --exclude="**/*Cache/"              \
-    --exclude="**/cache*"               \
-    --exclude="**/*cache/"              \
-    --exclude="**/Temp/"                \
-    --exclude="**/temp/"                \
-    --exclude="**/tmp/"                 \
-    --exclude="**/target/debug/"        \
-    --exclude="**/target/rls/"          \
+rsync -avP --delete                           \
+    --exclude="chris/.android/"               \
+    --exclude="chris/.cache/"                 \
+    --exclude="chris/.cargo/"                 \
+    --exclude="chris/.dbus"                   \
+    --exclude="chris/.debug/"                 \
+    --exclude="chris/.gradle/"                \
+    --exclude="chris/.dart/"                  \
+    --exclude="chris/.dartServer/"            \
+    --exclude="chris/.local/share/Trash/"     \
+    --exclude="chris/.local/share/Steam/"     \
+    --exclude="chris/.config/BraveSoftware"   \
+    --exclude="chris/.config/Code"            \
+    --exclude="chris/.npm/"                   \
+    --exclude="chris/.npm-packages/"          \
+    --exclude="chris/.rustup/"                \
+    --exclude="chris/.thumbnails/"            \
+    --exclude="chris/.AndroidStudio*"         \
+    --exclude="chris/.PyCharm*/system/caches" \
+    --exclude="chris/.PyCharm*/system/log"    \
+    --exclude="chris/Android/"                \
+    --exclude="chris/snap/"                   \
+    --exclude="chris/Server/"                 \
+    --exclude="chris/Downloads/"              \
+    --exclude="chris/Movies/"                 \
+    --exclude="chris/**/Cache*"               \
+    --exclude="chris/**/*Cache/"              \
+    --exclude="chris/**/cache*"               \
+    --exclude="chris/**/*cache/"              \
+    --exclude="chris/**/Temp/"                \
+    --exclude="chris/**/temp/"                \
+    --exclude="chris/**/tmp/"                 \
+    --exclude="chris/**/target/debug/"        \
+    --exclude="chris/**/target/rls/"          \
     "$SRC" "$TRG/" > $LOGFILE
 
 touch "$TRG"
