@@ -29,8 +29,8 @@ echo "  $HOME    $(df -h --output=used,size,pcent ~ |\
     tail -n1 | sed -E 's/([0-9%]+)$/(\1 used)/')"
 if [ -f /usr/share/i3blocks/iface ]; then
   echo -e $COLOR_BLUE
-  echo "  IPv6:  $(/usr/share/i3blocks/iface -6 | head -n1)"
-  echo "  IPv4:  $(/usr/share/i3blocks/iface -4 | head -n1)"
+  echo "  IPv6:  $(~/dotfiles/thirdparty/iface -6 | head -n1)"
+  echo "  IPv4:  $(~/dotfiles/thirdparty/iface -4 | head -n1)"
 fi
 if [ -s $TODOFILE ]; then
   echo -e $COLOR_YELLOW

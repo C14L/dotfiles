@@ -3,17 +3,33 @@
 # Mount read-only encrypted view of unencrypted local data
 # Copy encfs xml file to backup folder for later decryption
 
-DIR="Testdir"
-
 [ -z "$SERVER01" ] && echo "Error: SERVER01 envvar not set." && exit 1
 
+DIR="$1"
 SRC="$HOME/$DIR"
 TRG="$SERVER01:~/backup-$(hostname)-dirs/${DIR}_encfs"
 SRC_ENCFS="/tmp/encfs-temp-for-${DIR}"
-LOGFILE="/tmp/${SUBDIR}.log"
+LOGFILE="/tmp/${DIR}.log"
 
+# TODO: verify that the dir name is one alphanum or more
+# and it is not empty (that would backup all of home) or
+# has a slash or other special chars
+
+# TODO
+
+# verify that the directory actually exists
+if [ -e "$SRC" ]; then
+    echo "Backup of directory: $SRC"
+    echo
+else
+    echo "Error: directory not found in user home: $SRC"
+    exit 1
+fi
+
+# make sure the last run exited cleanly, otherwise user has
+# to clean up manually
 if [ -e "$SRC_ENCFS" ]; then
-    echo "Mount dir for encfs view already exists! Exiting..."
+    echo "Error: Mount dir ${SRC_ENCFS} view already exists! Exiting..."
     exit 1
 fi
 
