@@ -1,0 +1,6 @@
+##############################################################################
+# Vagrant
+##############################################################################
+
+export VAGRANT_DISABLE_VBOXSYMLINKCREATE=1  # Globally disable guest's ability to create symlinks in the shanred folder
+
