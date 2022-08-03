@@ -21,6 +21,7 @@ sudo apt install --yes exif
 #sudo apt install --yes feh
 sudo apt install --yes cmake cmake-data
 sudo apt install --yes ffmpeg
+sudo apt install --yes fzf
 #sudo apt install --yes font-manager
 #sudo apt install --yes fonts-noto
 #sudo apt install --yes gconf2 gconf2-common gconf2-service gconf2-service-backend
@@ -65,6 +66,7 @@ sudo apt install --yes screenruler
 sudo apt install --yes sshfs
 sudo apt install --yes stress # impose load to test a computer system
 #sudo apt install --yes texlive-fonts-recommended texlive-latex-base texlive-latex-recommended
+sudo apt install --yes tldr
 sudo apt install --yes traceroute
 sudo apt install --yes tree
 #sudo apt install --yes vim vim-editorconfig vim-fugitive vim-python-jedi vim-youcompleteme
@@ -79,6 +81,7 @@ sudo apt install --yes whois
 sudo apt install --yes xdotool # simulate X11 keyboard input
 sudo apt install --yes xsel # X11 clipboard reader
 sudo apt install --yes zlib1g-dev # gzip and pkzip deflate compression methods
+sudo apt install --yes youtube-dl
 
 sudo apt install --yes systemd-container
 sudo apt install --yes ubuntu-restricted-extras
