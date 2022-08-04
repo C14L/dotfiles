@@ -17,7 +17,7 @@ set clipboard=unnamedplus  " Yank to system clipboard
 
 set number " line numbers
 "set relativenumber " Start counting from the cursor line in both directions
-set cursorline " Highlight the line the cursor is on
+"set cursorline " Highlight the line the cursor is on
 set ruler " Probably not needed anymore
 
 set laststatus=2 " Use lightline
@@ -28,7 +28,7 @@ set softtabstop=4
 set shiftwidth=4
 set textwidth=0 " Disable automatic wrapping
 set expandtab
-set autoindent
+"set autoindent
 
 set wrap linebreak nolist " do not insert newlines on wrapping
 set fileformat=unix
@@ -332,12 +332,23 @@ au BufRead,BufNewFile *.py let b:comment_leader = '#'
 
 " --- Web: JS/HTML/CSS
 
-au BufNewFile,BufRead *.js, *.html, *.css set tabstop=2
-au BufNewFile,BufRead *.js, *.html, *.css set softtabstop=2
-au BufNewFile,BufRead *.js, *.html, *.css set expandtab
-au BufNewFile,BufRead *.js, *.html, *.css set shiftwidth=2
-au BufRead,BufNewFile *.js, *.html, *.css let b:comment_leader = '//'
+au BufNewFile,BufRead *.js set tabstop=2
+au BufNewFile,BufRead *.js set softtabstop=2
+au BufNewFile,BufRead *.js set expandtab
+au BufNewFile,BufRead *.js set shiftwidth=2
+au BufRead,BufNewFile *.js let b:comment_leader = '//'
 
+au BufNewFile,BufRead *.html set tabstop=2
+au BufNewFile,BufRead *.html set softtabstop=2
+au BufNewFile,BufRead *.html set expandtab
+au BufNewFile,BufRead *.html set shiftwidth=2
+au BufRead,BufNewFile *.html let b:comment_leader = '//'
+
+au BufNewFile,BufRead *.css set tabstop=2
+au BufNewFile,BufRead *.css set softtabstop=2
+au BufNewFile,BufRead *.css set expandtab
+au BufNewFile,BufRead *.css set shiftwidth=2
+au BufRead,BufNewFile *.css let b:comment_leader = '//'
 
 " #####################################################################
 " # Language specific overrides / settings
@@ -366,7 +377,7 @@ hi MatchParen cterm=underline ctermbg=none ctermfg=white
 "nmap <leader>; :Buffers<CR>
 "nmap <leader>w :w<CR> " Quick-save
 
-" Jump to append to end of line (usually to geo out of parens and append a
+" Jump to append to end of line (usually to get out of parens and append a
 " semicolon.)
 imap <C-l> <Esc>$a
 
