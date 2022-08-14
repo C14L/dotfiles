@@ -23,7 +23,6 @@ rsync -avP --delete                           \
     --exclude="$USER/.cache/"                 \
     --exclude="$USER/.dbus"                   \
     --exclude="$USER/.local/share/Trash/"     \
-    --exclude="$USER/snap/"                   \
     --exclude="$USER/**/Cache*"               \
     --exclude="$USER/**/*Cache/"              \
     --exclude="$USER/**/cache*"               \
