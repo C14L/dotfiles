@@ -29,8 +29,7 @@ function reset_ps1(){
 
     PS1="\
 ${debian_chroot:+($debian_chroot)}\
-\[$COLOR_BLACK\]\
-\[$BGCOLOR_CYAN\] \t \[$BGCOLOR_BLACK\]\
+\[$COLOR_LIGHTRED\]\D{%F} \t\[$BGCOLOR_BLACK\]\
 \[$COLOR_GREEN\] \$(virtualenv_info)\
 \[$COLOR_BLUE\] \w\
 \[$COLOR_YELLOW\]\$(__git_ps1)\
