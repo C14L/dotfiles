@@ -13,7 +13,7 @@ export WORKON_HOME=~/venv
 
 # Find server login username@domain
 for f in $HOME/.login_*; do
-export $(echo ${f#*login_} | tr '[:lower:]' '[:upper:]')=\"$(cat $f)\"
+export $(echo ${f#*login_} | tr '[:lower:]' '[:upper:]')=$(cat $f)
 done
 
 # Mark this as dev box
