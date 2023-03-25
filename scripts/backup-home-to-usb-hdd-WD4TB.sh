@@ -6,7 +6,7 @@ LOGFILE="/tmp/$SUBDIR.log"
 
 SRC="$HOME"
 
-TRG="/WD4TB/$SUBDIR"
+TRG="/WD2TB/$SUBDIR"
 
 echo "Backup from: $SRC"
 echo "Writing  to: $TRG/"
@@ -20,9 +20,17 @@ echo
 mkdir -p "$TRG"
 
 rsync -avP --delete                           \
+    --exclude="$USER/Android/"                \
     --exclude="$USER/.cache/"                 \
     --exclude="$USER/.dbus"                   \
     --exclude="$USER/.local/share/Trash/"     \
+    --exclude="$USER/.local/share/docker/"    \
+    --exclude="$USER/.local/share/containers/" \
+    --exclude="$USER/.config/BraveSoftware/"  \
+    --exclude="$USER/.config/vivaldi/"        \
+    --exclude="$USER/snap/"                   \
+    --exclude="$USER/virtual_machines/"       \
+    --exclude="$USER/venv/"                   \
     --exclude="$USER/**/Cache*"               \
     --exclude="$USER/**/*Cache/"              \
     --exclude="$USER/**/cache*"               \
