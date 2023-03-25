@@ -1,12 +1,22 @@
 #!/bin/bash
 
+if [ -z "$1" ]; then
+  echo "To run a backup, please provide a mount point name. Probably WD2TB or WD4TB or something."
+  exit 1
+fi
+
 SUBDIR="backup-$(hostname)"
 
 LOGFILE="/tmp/$SUBDIR.log"
 
 SRC="$HOME"
 
-TRG="/WD2TB/$SUBDIR"
+TRG="/$1/$SUBDIR"
+
+if [ ! -d "$TRG" ]; then
+  echo "Backup target directory not found: $TRG"
+  exit 1
+fi
 
 echo "Backup from: $SRC"
 echo "Writing  to: $TRG/"
