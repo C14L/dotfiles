@@ -40,7 +40,7 @@
 "workbench.iconTheme": null,
 "workbench.sideBar.location": "left",
 "explorer.confirmDragAndDrop": false,
-"editor.cursorSmoothCaretAnimation": true,
+"editor.cursorSmoothCaretAnimation": "on",
 "dart.closingLabels": false,
 "workbench.activityBar.visible": true,
 "editor.fontSize": 18,
