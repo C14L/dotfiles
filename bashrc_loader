@@ -5,7 +5,7 @@
 export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Source bash settings from ~/dotfils/bash/*
-for f in $DOTFILES_DIR/bash/* ; do source $f ; done
+for f in $DOTFILES_DIR/bash/!(*.gpg) ; do source $f ; done
 
 # Enable autojump "j" on my own devices
 source /usr/share/autojump/autojump.sh
