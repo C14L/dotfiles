@@ -36,7 +36,6 @@
 "python.venvPath": "~/venv/",
 "python.venvFolders": [".virtualenvs"],
 "window.title": "${dirty}${activeEditorLong}${separator}[${rootName}]",
-"window.zoomLevel": 0,
 "workbench.iconTheme": null,
 "workbench.sideBar.location": "left",
 "explorer.confirmDragAndDrop": false,
@@ -65,12 +64,15 @@
 "rust-analyzer.inlayHints.enable": false,
 "python.languageServer": "Pylance",
 "java.semanticHighlighting.enabled": true,
-"workbench.colorTheme": "Base16 Dark 3024",
 "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
 },
 "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
+},
+"workbench.colorTheme": "Visual Studio 2019 Dark",
+"[python]": {
+    "editor.formatOnType": true
 }
 }
