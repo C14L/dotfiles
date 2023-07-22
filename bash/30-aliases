@@ -2,6 +2,7 @@
 # Bash aliases
 ##############################################################################
 
+alias ll='ls -la'
 alias lll='ls -lah'
 alias e='leafpad'
 alias o="xdg-open"
