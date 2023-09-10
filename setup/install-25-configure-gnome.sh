@@ -21,15 +21,15 @@ gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift
 # Default: ['<Super>Page_Down', '<Control><Alt>Down']
 #          ['<Super>Page_Up', '<Control><Alt>Up']
 
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Super>Page_Down']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Super>Page_Up']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "[]"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "[]"
 
 # Move current window between workspaces:
 # Default: ['<Super><Shift>Page_Down', '<Control><Shift><Alt>Down']
 #          ['<Super><Shift>Page_Up', '<Control><Shift><Alt>Up']
 
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Super><Shift>Page_Down']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Super><Shift>Page_Up']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "[]"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "[]"
 
 # Unset weird keybiding that messes up multi monitor settings
 # Default: ['<Super>p', 'XF86Display']
@@ -42,15 +42,15 @@ gsettings set org.gnome.mutter.keybindings switch-monitor "[]"
 #          ['<Control><Shift><Alt>Left']
 #          ['<Control><Shift><Alt>Right']
 
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "[]"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "[]"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left []
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right []
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Super>Page_Up']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Super>Page_Down']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Super><Shift>Page_Up']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Super><Shift>Page_Down']"
 
 # screenshot: ['<Shift>Print']
 # screenshot-window: ['<Alt>Print']
-gsettings set org.gnome.shell.keybindings screenshot "['<Shift><Super>p']"
-gsettings set org.gnome.shell.keybindings screenshot-window "['<Super>p']"
+#gsettings set org.gnome.shell.keybindings screenshot "['<Shift><Super>p']"
+#gsettings set org.gnome.shell.keybindings screenshot-window "['<Super>p']"
 
 # Nautilus settings
 gsettings set org.gnome.nautilus.preferences show-hidden-files true
