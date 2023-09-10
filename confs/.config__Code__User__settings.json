@@ -71,8 +71,8 @@
     "default": "right",
     "jupyter-notebook": "left"
 },
-"workbench.colorTheme": "Visual Studio 2019 Dark",
 "[python]": {
     "editor.formatOnType": true
-}
+},
+"redhat.telemetry.enabled": false
 }
