@@ -13,5 +13,6 @@ sudo mkdir -p /WD2TB
 sudo mkdir -p /WD4TB
 sudo mkdir -p /SD128GB_1
 sudo mkdir -p /SD128GB_2
-sudo mkdir -p /space01
+
+sudo mkdir -p /space && sudo chown $USER:$USER /space
 
