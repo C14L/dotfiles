@@ -28,7 +28,8 @@ echo
 echo "Running rsync, please wait..."
 echo "Logfile: $LOGFILE"
 echo
-
+echo "*** Remember to backup data in /space/ separately! ***"
+echo
 echo "Created temporary folder $SRC_ENCFS ..."
 encfs --reverse --idle=60 --extpass="cat /home/chris/.backuppwd" -o ro "$SRC" "$SRC_ENCFS"
 echo "Copying encrypted view of files to server..."
@@ -39,4 +40,7 @@ echo "Unmounting encfs view..."
 fusermount -u "$SRC_ENCFS"
 echo "Removing temporary folder $SRC_ENCFS ..."
 rmdir "$SRC_ENCFS"
+echo
+echo "*** Remember to backup data in /space/ separately! ***"
+echo
 
