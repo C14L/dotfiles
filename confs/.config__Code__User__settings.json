@@ -41,7 +41,6 @@
 "explorer.confirmDragAndDrop": false,
 "editor.cursorSmoothCaretAnimation": "on",
 "dart.closingLabels": false,
-"workbench.activityBar.visible": true,
 "editor.fontSize": 18,
 "editor.lineHeight": 24,
 "python.formatting.provider": "black",
@@ -74,5 +73,6 @@
 "[python]": {
     "editor.formatOnType": true
 },
-"redhat.telemetry.enabled": false
+"redhat.telemetry.enabled": false,
+"typescript.updateImportsOnFileMove.enabled": "always"
 }
