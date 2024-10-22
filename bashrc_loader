@@ -8,10 +8,10 @@ export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 for f in $DOTFILES_DIR/bash/!(*.gpg) ; do source $f ; done
 
 # Enable autojump "j" on my own devices
-source /usr/share/autojump/autojump.sh
+[  -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
 
 # Virtual environment settings
-source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+[ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ] && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
 # Add FZF fuzzy searcher to bash
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -40,4 +40,3 @@ if [ -s $TODOFILE ]; then
 fi
 echo -e $COLOR_NONE
 ##############################################################################
-
