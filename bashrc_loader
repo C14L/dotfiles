@@ -5,10 +5,10 @@
 export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Source bash settings from ~/dotfils/bash/*
-for f in $DOTFILES_DIR/bash/!(*.gpg) ; do source $f ; done
+for f in $DOTFILES_DIR/bash/* ; do [[ $f != *.gpg ]] && source "$f"; done
 
 # Enable autojump "j" on my own devices
-[  -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
+[ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
 
 # Virtual environment settings
 [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ] && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
