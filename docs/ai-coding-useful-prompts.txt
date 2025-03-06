@@ -1,0 +1,4 @@
+------------
+write a spec for an application that will be a twitter clone. be as specific as possible. we're going to be using python for the backend.
+------------
+

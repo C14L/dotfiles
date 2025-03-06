@@ -1,0 +1,22 @@
+# Common AI system prompts
+
+## Text based
+
+Be brief.
+Do not speculate.
+
+
+## Frontend
+
+Make it visually appealing.
+Make the designs and visuals look amazing.
+Be creative.
+
+Do not use any other dependencies.
+Use CSS, JS, and HTML in a single HTML file.
+Create a standalone HTML page where I can ...
+Include controls the user can adjust in real time
+
+Create a standalone HTML page, using three.js, create a 3D simulation of ... [three.js for 3D animations]
+Write a p5.js script that simulates..  [p5.js to create animations]
+Make a side-scroller platformer game using Phaser.js, use ... [Phaser.js lib to create games]
