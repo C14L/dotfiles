@@ -74,5 +74,15 @@
     "editor.formatOnType": true
 },
 "redhat.telemetry.enabled": false,
-"typescript.updateImportsOnFileMove.enabled": "always"
+"typescript.updateImportsOnFileMove.enabled": "always",
+"qute.validation.enabled": true,
+"quarkus.tools.alwaysShowWelcomePage": false,
+"terminal.integrated.allowChords": false,
+"quarkus.tools.debug.terminateProcessOnExit": "Always terminate",
+"git.confirmSync": false,
+"vs-kubernetes": {
+    "vscode-kubernetes.helm-path-linux": "/home/chris/.local/state/vs-kubernetes/tools/helm/linux-amd64/helm",
+    "vscode-kubernetes.kubectl-path-linux": "/home/chris/.local/state/vs-kubernetes/tools/kubectl/kubectl",
+    "vscode-kubernetes.minikube-path-linux": "/home/chris/.local/state/vs-kubernetes/tools/minikube/linux-amd64/minikube"
+}
 }
