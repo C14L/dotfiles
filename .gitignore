@@ -7,3 +7,5 @@
 
 *.secret
 
+# Don't add server settings when decrypted
+bash/21-servervars
