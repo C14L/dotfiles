@@ -82,6 +82,20 @@ Connect via SSH to the QEMU VM with the user created during OS install.
 ssh -p 10000 chris@localhost
 ```
 
+## Mount the host directory in the guest VM
+
+On the guest system, create a mount point and mount the directory from the 
+host there.
+
+```sh
+mkdir -p /home/chris/Repos
+sudo mount -t 9p -o trans=virtio,version=9p2000.L host_repos /home/chris/Repos
+```
+
+To add the mount automatically when the VM boots, add 
+`host_repos /home/chris/Repos 9p trans=virtio,version=9p2000.L,rw 0 0`
+to the `/etc/fstab` file.
+
 
 ## Run with GUI
 
@@ -102,7 +116,9 @@ qemu-system-aarch64 -M virt \
     -device usb-ehci \
     -device usb-kbd \
     -device usb-tablet \
-    -display cocoa,show-cursor=on
+    -display cocoa,show-cursor=on \
+    -fsdev local,id=fsdev0,path=$HOME/Repos,security_model=mapped-file \
+    -device virtio-9p-pci,fsdev=fsdev0,mount_tag=host_repos
 ```
 
 
