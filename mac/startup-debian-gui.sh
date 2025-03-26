@@ -17,3 +17,8 @@ qemu-system-aarch64 -M virt \
     -display cocoa,show-cursor=on \
     -fsdev local,id=fsdev0,path=$HOME/Repos,security_model=mapped-file \
     -device virtio-9p-pci,fsdev=fsdev0,mount_tag=host_repos
+    
+    #  \
+    # -device virtio-serial \
+    # -chardev socket,path=/tmp/qemu-ga.sock,server=on,wait=off,id=qga0 \
+    # -device virtserialport,chardev=qga0,name=org.qemu.guest_agent.0
