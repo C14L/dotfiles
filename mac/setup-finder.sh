@@ -3,7 +3,7 @@
 # Some useful settings for MacOS Finder.
 
 # Show hidden files in Finder. GUI: `Cmd + Shift + .`
-defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder
+defaults write com.apple.finder AppleShowAllFiles -bool true
 
 # Show all filename extensions in Finder
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
