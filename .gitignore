@@ -6,6 +6,7 @@
 !*.png
 
 *.secret
+.DS_Store
 
 # Don't add server settings when decrypted
 bash/21-servervars
