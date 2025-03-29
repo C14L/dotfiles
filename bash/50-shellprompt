@@ -1,0 +1,41 @@
+##############################################################################
+# Shell prompt settings
+##############################################################################
+
+# Enable shell with gitaware and virtualenv
+# Clone git@github.com:jimeh/git-aware-prompt.git into ~/bin/ directory.
+
+export GITAWAREPROMPT=$DOTFILES_DIR/thirdparty/git-aware-prompt
+source "${GITAWAREPROMPT}/main.sh"
+
+# disable the default virtualenv prompt change
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# Show git branches.
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+
+function virtualenv_info(){
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        # Strip out the path and just leave the env name
+        venv="${VIRTUAL_ENV##*/}"
+    else
+        venv='-'
+    fi
+    [[ -n "$venv" ]] && echo "$venv"
+}
+
+function reset_ps1(){
+
+    PS1="\
+${debian_chroot:+($debian_chroot)}\
+\[$COLOR_LIGHTRED\]\D{%F} \t\[$BGCOLOR_BLACK\]\
+\[$COLOR_GREEN\] \$(virtualenv_info)\
+\[$COLOR_BLUE\] \w\
+\[$COLOR_YELLOW\]\$(__git_ps1)\
+\[$COLOR_NONE\]\n \$ "
+
+}
+
+reset_ps1
+
