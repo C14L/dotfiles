@@ -7,13 +7,19 @@ echo "Starting Debian VM in GUI mode with ~/Repos shared directory..."
 
 qemu-system-x86_64 -smp 4 -m 8G -cpu max -machine q35 \
     -hda $HOME/VMs/debian-amd64-disk.qcow2 \
-    -debugcon file:$HOME/VMs/debugcon.log \
-    -vga virtio -display cocoa,show-cursor=on \
     -device e1000,netdev=user.0 -netdev user,id=user.0,hostfwd=tcp:0.0.0.0:10001-:22 \
-    -device usb-ehci \
-    -device usb-kbd \
-    -device usb-tablet
-    
+    -nographic \
+    -device virtio-9p-pci,fsdev=fsdev0,mount_tag=host_repos \
+    -fsdev local,id=fsdev0,path=$HOME/Repos,security_model=mapped-file
+
+# qemu-system-x86_64 -smp 4 -m 8G -cpu max -machine q35 \
+#     -hda $HOME/VMs/debian-amd64-disk.qcow2 \
+#     -device e1000,netdev=user.0 -netdev user,id=user.0,hostfwd=tcp:0.0.0.0:10001-:22 \
+#     -device virtio -display cocoa,show-cursor=on \
+#     -device usb-ehci \
+#     -device usb-kbd \
+#     -device usb-tablet \
+
 # --------------
 
 # NOTES
