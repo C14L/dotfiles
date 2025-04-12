@@ -1,16 +1,24 @@
 #!/usr/bin/env zsh
 
-echo "Starting Debian VM in GUI mode with ~/Repos shared directory..."
+echo "Starting x86_64 Debian VM in GUI mode with ~/Repos shared directory..."
+
+SSHPORT=10001
+
+VMFILE=$HOME/VMs/debian-amd64-disk.qcow2
+
+SHARED_PATH=$HOME/Repos
+
+qemu-system-x86_64 -smp 4 -m 8G -cpu max -machine q35 \
+    -hda $VMFILE \
+    -device e1000,netdev=user.0 -netdev user,id=user.0,hostfwd=tcp:0.0.0.0:$SSHPORT-:22 \
+    -device virtio-9p-pci,fsdev=fsdev0,mount_tag=host_repos \
+    -fsdev local,id=fsdev0,path=$SHARED_PATH,security_model=mapped-file \
+    -nographic
+
+# --------------
 
 # the ovmf_vars_amd64.fd file was too large, truncating it worked
 # truncate -s 1M ~/VMs/ovmf_vars_amd64.fd
-
-qemu-system-x86_64 -smp 4 -m 8G -cpu max -machine q35 \
-    -hda $HOME/VMs/debian-amd64-disk.qcow2 \
-    -device e1000,netdev=user.0 -netdev user,id=user.0,hostfwd=tcp:0.0.0.0:10001-:22 \
-    -nographic \
-    -device virtio-9p-pci,fsdev=fsdev0,mount_tag=host_repos \
-    -fsdev local,id=fsdev0,path=$HOME/Repos,security_model=mapped-file
 
 # qemu-system-x86_64 -smp 4 -m 8G -cpu max -machine q35 \
 #     -hda $HOME/VMs/debian-amd64-disk.qcow2 \
