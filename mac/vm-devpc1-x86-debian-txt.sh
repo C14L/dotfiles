@@ -4,9 +4,14 @@ SSHPORT=10001
 
 NAME=devpc1
 
-VMFILE=$HOME/VMs/$devpc1-x86-debian.qcow2
+VMFILE=$HOME/VMs/$NAME-x86-debian.qcow2
 
 SHARED_PATH=$HOME/VMs/$NAME-share
+
+if pgrep -f "$NAME" > /dev/null; then
+    echo "$NAME is already running"
+    exit 0
+fi
 
 qemu-system-x86_64 -smp 4 -m 8G -cpu max -machine q35 \
     -hda $VMFILE \
@@ -51,4 +56,3 @@ qemu-system-x86_64 -smp 4 -m 8G -cpu max -machine q35 \
 #     -device usb-ehci \
 #     -device usb-kbd \
 #     -device usb-tablet
-

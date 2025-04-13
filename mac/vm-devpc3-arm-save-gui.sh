@@ -8,6 +8,11 @@ VMFILE=$HOME/VMs/$NAME-arm-save.qcow2
 
 SHARED_PATH=$HOME/VMs/$NAME-share
 
+if pgrep -f "$NAME" > /dev/null; then
+    echo "$NAME is already running"
+    exit 0
+fi
+
 qemu-system-aarch64 -M virt -accel hvf -smp 4 -m 8G -cpu cortex-a72 \
     -drive "format=raw,file=$HOME/VMs/devpc3-edk2-arm-save.fd,if=pflash,readonly=on" \
     -drive "format=raw,file=$HOME/VMs/devpc3-ovmf-arm-save.fd,if=pflash" \
