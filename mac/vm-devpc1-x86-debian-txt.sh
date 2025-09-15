@@ -13,12 +13,24 @@ if pgrep -f "$NAME" > /dev/null; then
     exit 0
 fi
 
-qemu-system-x86_64 -smp 4 -m 8G -cpu max -machine q35 \
-    -hda $VMFILE \
-    -device e1000,netdev=user.0 -netdev user,id=user.0,hostfwd=tcp:0.0.0.0:$SSHPORT-:22 \
-    -device virtio-9p-pci,fsdev=fsdev0,mount_tag=host_repos \
-    -fsdev local,id=fsdev0,path=$SHARED_PATH,security_model=mapped-file \
-    -nographic
+if [[ "$1" == "gui" ]]; then
+    qemu-system-x86_64 -smp 8 -m 12G -cpu max -machine q35 \
+        -hda $VMFILE \
+        -device e1000,netdev=user.0 -netdev user,id=user.0,hostfwd=tcp:0.0.0.0:$SSHPORT-:22 \
+        -device virtio-9p-pci,fsdev=fsdev0,mount_tag=host_repos -fsdev local,id=fsdev0,path=$SHARED_PATH,security_model=mapped-file \
+        -device virtio-gpu-pci \
+        -device usb-ehci \
+        -device usb-kbd \
+        -device usb-tablet \
+        -display cocoa,show-cursor=on
+else
+    qemu-system-x86_64 -smp 4 -m 8G -cpu max -machine q35 \
+        -hda $VMFILE \
+        -device e1000,netdev=user.0 -netdev user,id=user.0,hostfwd=tcp:0.0.0.0:$SSHPORT-:22 \
+        -device virtio-9p-pci,fsdev=fsdev0,mount_tag=host_repos \
+        -fsdev local,id=fsdev0,path=$SHARED_PATH,security_model=mapped-file \
+        -nographic
+fi
 
 # --------------
 

@@ -1,12 +1,12 @@
 #!/usr/bin/env zsh
 
-SSHPORT=10003
+SSHPORT=10004
 
-NAME=devpc3
+NAME=devpc4
 
-VMFILE=$HOME/VMs/$NAME-arm-save.qcow2
+VMFILE=$HOME/VMs/$NAME/$NAME.qcow2
 
-SHARED_PATH=$HOME/VMs/$NAME-share
+SHARED_PATH=$HOME/VMs/$NAME/share
 
 if pgrep -f "$NAME" > /dev/null; then
     echo "$NAME is already running"
@@ -16,8 +16,8 @@ fi
 qemu-system-aarch64 -M virt -accel hvf -smp 4 -m 8G -cpu cortex-a72 \
     -name $NAME \
     -monitor stdio \
-    -drive "format=raw,file=$HOME/VMs/devpc3-edk2-arm-save.fd,if=pflash,readonly=on" \
-    -drive "format=raw,file=$HOME/VMs/devpc3-ovmf-arm-save.fd,if=pflash" \
+    -drive "format=raw,file=$HOME/VMs/$NAME/edk2.fd,if=pflash,readonly=on" \
+    -drive "format=raw,file=$HOME/VMs/$NAME/ovmf.fd,if=pflash" \
     -hda $VMFILE \
     -device e1000,netdev=usernet -netdev user,id=usernet,hostfwd=tcp:0.0.0.0:$SSHPORT-:22 \
     -device virtio-gpu-pci \
