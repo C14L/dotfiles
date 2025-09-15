@@ -4,9 +4,14 @@ SSHPORT=10001
 
 NAME=devpc1
 
-VMFILE=$HOME/VMs/$NAME-x86-debian.qcow2
+VMFILE=$HOME/VMs/$NAME/$NAME.qcow2
+SHARED_PATH=$HOME/VMs/$NAME/share
+#
+# Files edk2.fd and ovmf.fd are not needed apparently
 
-SHARED_PATH=$HOME/VMs/$NAME-share
+###################
+# x86-64 Debian VM
+###################
 
 if pgrep -f "$NAME" > /dev/null; then
     echo "$NAME is already running"
@@ -15,6 +20,8 @@ fi
 
 if [[ "$1" == "gui" ]]; then
     qemu-system-x86_64 -smp 8 -m 12G -cpu max -machine q35 \
+        -name $NAME \
+        -monitor stdio \
         -hda $VMFILE \
         -device e1000,netdev=user.0 -netdev user,id=user.0,hostfwd=tcp:0.0.0.0:$SSHPORT-:22 \
         -device virtio-9p-pci,fsdev=fsdev0,mount_tag=host_repos -fsdev local,id=fsdev0,path=$SHARED_PATH,security_model=mapped-file \
@@ -22,49 +29,13 @@ if [[ "$1" == "gui" ]]; then
         -device usb-ehci \
         -device usb-kbd \
         -device usb-tablet \
-        -display cocoa,show-cursor=on
+        -display cocoa,show-cursor=off,zoom-to-fit=on,zoom-interpolation=on
 else
     qemu-system-x86_64 -smp 4 -m 8G -cpu max -machine q35 \
+        -name $NAME \
         -hda $VMFILE \
         -device e1000,netdev=user.0 -netdev user,id=user.0,hostfwd=tcp:0.0.0.0:$SSHPORT-:22 \
         -device virtio-9p-pci,fsdev=fsdev0,mount_tag=host_repos \
         -fsdev local,id=fsdev0,path=$SHARED_PATH,security_model=mapped-file \
         -nographic
 fi
-
-# --------------
-
-# the devpc1-ovmf-x86.fd file was too large, truncating it worked
-# truncate -s 1M ~/VMs/devpc1-ovmf-x86.fd
-
-# qemu-system-x86_64 -smp 4 -m 8G -cpu max -machine q35 \
-#     -hda $HOME/VMs/devpc1-x86.qcow2 \
-#     -device e1000,netdev=user.0 -netdev user,id=user.0,hostfwd=tcp:0.0.0.0:10001-:22 \
-#     -device virtio -display cocoa,show-cursor=on \
-#     -device usb-ehci \
-#     -device usb-kbd \
-#     -device usb-tablet \
-
-# --------------
-
-# NOTES
-#
-# -device virtio-gpu-pci -display cocoa,show-cursor=on \
-# -chardev socket,path=/tmp/qemu-ga.sock,server=on,wait=off,id=qga0 \
-# -device virtserialport,chardev=qga0,name=org.qemu.guest_agent.0 \
-# -drive "format=raw,file=$HOME/VMs/devpc1-edk2-x86.fd,if=pflash,readonly=on" \
-# -drive "format=raw,file=$HOME/VMs/devpc1-ovmf-x86.fd.fd,if=pflash" \
-#
-# INSTALL:
-#
-# qemu-system-x86_64 -smp 4 -m 8G -cpu max \
-#     -boot order=d \
-#     -cdrom $HOME/VMs/debian-12.10.0-amd64-netinst.iso \
-#     -hda $HOME/VMs/debian-amd64-disk.qcow2 \
-#     -netdev user,id=user.0 -device e1000,netdev=user.0 \
-#     -drive "format=raw,file=$HOME/VMs/devpc1-edk2-x86.fd,if=pflash,readonly=on" \
-#     -drive "format=raw,file=$HOME/VMs/devpc1-ovmf-x86.fd.fd,if=pflash" \
-#     -machine q35 \
-#     -device usb-ehci \
-#     -device usb-kbd \
-#     -device usb-tablet

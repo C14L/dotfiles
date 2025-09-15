@@ -4,9 +4,14 @@ SSHPORT=10003
 
 NAME=devpc3
 
-VMFILE=$HOME/VMs/$NAME-arm-save.qcow2
+VMFILE=$HOME/VMs/$NAME/$NAME.qcow2
+EDK2_FILE=$HOME/VMs/$NAME/edk2.fd
+OVMF_FILE=$HOME/VMs/$NAME/ovmf.fd
+SHARED_PATH=$HOME/VMs/$NAME/share
 
-SHARED_PATH=$HOME/VMs/$NAME-share
+####################
+# aarch64 Debian VM
+####################
 
 if pgrep -f "$NAME" > /dev/null; then
     echo "$NAME is already running"
@@ -16,9 +21,9 @@ fi
 qemu-system-aarch64 -M virt -accel hvf -smp 4 -m 8G -cpu cortex-a72 \
     -name $NAME \
     -monitor stdio \
-    -drive "format=raw,file=$HOME/VMs/devpc3-edk2-arm-save.fd,if=pflash,readonly=on" \
-    -drive "format=raw,file=$HOME/VMs/devpc3-ovmf-arm-save.fd,if=pflash" \
     -hda $VMFILE \
+    -drive "format=raw,file=$EDK2_FILE,if=pflash,readonly=on" \
+    -drive "format=raw,file=$OVMF_FILE,if=pflash" \
     -device e1000,netdev=usernet -netdev user,id=usernet,hostfwd=tcp:0.0.0.0:$SSHPORT-:22 \
     -device virtio-gpu-pci \
     -device usb-ehci \
