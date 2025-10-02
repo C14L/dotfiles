@@ -18,7 +18,7 @@ if pgrep -f "$NAME" > /dev/null; then
     exit 0
 fi
 
-qemu-system-aarch64 -M virt -accel hvf -smp 2 -m 8G -cpu cortex-a72 \
+qemu-system-aarch64 -M virt -accel hvf -smp 3 -m 12G -cpu cortex-a72 \
     -name $NAME \
     -monitor stdio \
     -hda $VMFILE \
@@ -31,6 +31,7 @@ qemu-system-aarch64 -M virt -accel hvf -smp 2 -m 8G -cpu cortex-a72 \
     -device usb-tablet \
     -device virtio-9p-pci,fsdev=fsdev0,mount_tag=host_repos \
     -fsdev local,id=fsdev0,path=$SHARED_PATH,security_model=mapped-file \
+    -audiodev coreaudio,id=snd0 -device intel-hda -device hda-duplex,audiodev=snd0 \
     -display cocoa,show-cursor=off,zoom-to-fit=on,zoom-interpolation=on
  
     #  \

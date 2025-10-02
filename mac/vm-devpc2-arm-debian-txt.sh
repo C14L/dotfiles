@@ -38,6 +38,7 @@ if [[ "$1" == "gui" ]]; then
         -device usb-ehci \
         -device usb-kbd \
         -device usb-tablet \
+        -audiodev coreaudio,id=snd0 -device intel-hda -device hda-duplex,audiodev=snd0 \
         -display cocoa,show-cursor=off,zoom-to-fit=on,zoom-interpolation=on
 else
     qemu-system-aarch64 -M virt -accel hvf -smp 4 -m 12G -cpu cortex-a72 \
