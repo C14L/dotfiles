@@ -62,6 +62,11 @@ qemu-system-aarch64 -M virt \
 Remove the -boot and -cdrom arguments to have the machine start from its 
 virtual disk.
 
+The LUKS prompt is on the serial console, not graphical. Add -serial mon:stdio 
+to your QEMU command. Boot output and prompt will appear in the host terminal. 
+Type passphrase there blindly if needed; use Ctrl+a then c to switch between 
+QEMU monitor and guest console.
+
 ```sh
 qemu-system-aarch64 -M virt \
     -accel hvf \
