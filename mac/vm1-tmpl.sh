@@ -1,8 +1,8 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
-SSHPORT=10005
-
-NAME=devpc5
+SSHPORT=10001
+DISPLAY=tmpl
+NAME=vm1
 
 VMFILE=$HOME/VMs/$NAME/$NAME.qcow2
 EDK2_FILE=$HOME/VMs/$NAME/edk2.fd
@@ -18,11 +18,13 @@ if pgrep -f "$NAME" > /dev/null; then
     exit 0
 fi
 
-#    -boot d -cdrom $HOME/VMs/debian-12.10.0-arm64-netinst.iso \
+echo "Use Ctrl+A C to switch between serial and monitor console"
+echo
+
 qemu-system-aarch64 -M virt -accel hvf -smp 3 -m 12G -cpu cortex-a72 \
-    -name $NAME \
-    -monitor stdio \
+    -name "$NAME-$DISPLAY" \
     -hda $VMFILE \
+    -serial mon:stdio \
     -drive "format=raw,file=$EDK2_FILE,if=pflash,readonly=on" \
     -drive "format=raw,file=$OVMF_FILE,if=pflash" \
     -device e1000,netdev=usernet -netdev user,id=usernet,hostfwd=tcp:0.0.0.0:$SSHPORT-:22 \
@@ -32,10 +34,12 @@ qemu-system-aarch64 -M virt -accel hvf -smp 3 -m 12G -cpu cortex-a72 \
     -device usb-tablet \
     -device virtio-9p-pci,fsdev=fsdev0,mount_tag=host_repos \
     -fsdev local,id=fsdev0,path=$SHARED_PATH,security_model=mapped-file \
-    -audiodev coreaudio,id=snd0 -device intel-hda -device hda-duplex,audiodev=snd0 \
+    -device intel-hda \
+    -device hda-duplex,audiodev=snd0 -audiodev coreaudio,id=snd0 \
     -display cocoa,show-cursor=off,zoom-to-fit=on,zoom-interpolation=on
- 
-    #  \
-    # -device virtio-serial \
-    # -chardev socket,path=/tmp/qemu-ga.sock,server=on,wait=off,id=qga0 \
-    # -device virtserialport,chardev=qga0,name=org.qemu.guest_agent.0
+
+#    -boot d -cdrom $HOME/VMs/debian-12.10.0-arm64-netinst.iso \
+#    -monitor stdio \
+#    -device virtio-serial \
+#    -chardev socket,path=/tmp/qemu-ga.sock,server=on,wait=off,id=qga0 \
+#    -device virtserialport,chardev=qga0,name=org.qemu.guest_agent.0

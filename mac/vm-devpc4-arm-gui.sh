@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-SSHPORT=10004
+SSHPORT=10014
 
 NAME=devpc4
 

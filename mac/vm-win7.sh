@@ -1,7 +1,10 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
+
+echo "NOPE!"
+exit 0
 
 qemu-system-x86_64 -smp 2 -m 4G -cpu max \
-    -name win7 \
+    -name "win7-Civ3" \
     -hda "$HOME/VMs/win7-disk1.vmdk" \
     -nic none \
     -device virtio-gpu-pci \

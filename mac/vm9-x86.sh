@@ -1,8 +1,8 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
-SSHPORT=10001
-
-NAME=devpc1
+SSHPORT=10009
+DISPLAY=x86
+NAME=vm9
 
 VMFILE=$HOME/VMs/$NAME/$NAME.qcow2
 SHARED_PATH=$HOME/VMs/$NAME/share
@@ -18,7 +18,15 @@ if pgrep -f "$NAME" > /dev/null; then
     exit 0
 fi
 
-if [[ "$1" == "gui" ]]; then
+if [[ "$1" == "txt" ]]; then
+    qemu-system-x86_64 -smp 4 -m 8G -cpu max -machine q35 \
+        -name $NAME \
+        -hda $VMFILE \
+        -device e1000,netdev=user.0 -netdev user,id=user.0,hostfwd=tcp:0.0.0.0:$SSHPORT-:22 \
+        -device virtio-9p-pci,fsdev=fsdev0,mount_tag=host_repos \
+        -fsdev local,id=fsdev0,path=$SHARED_PATH,security_model=mapped-file \
+        -nographic
+else
     qemu-system-x86_64 -smp 8 -m 12G -cpu max -machine q35 \
         -name $NAME \
         -monitor stdio \
@@ -30,12 +38,4 @@ if [[ "$1" == "gui" ]]; then
         -device usb-kbd \
         -device usb-tablet \
         -display cocoa,show-cursor=off,zoom-to-fit=on,zoom-interpolation=on
-else
-    qemu-system-x86_64 -smp 4 -m 8G -cpu max -machine q35 \
-        -name $NAME \
-        -hda $VMFILE \
-        -device e1000,netdev=user.0 -netdev user,id=user.0,hostfwd=tcp:0.0.0.0:$SSHPORT-:22 \
-        -device virtio-9p-pci,fsdev=fsdev0,mount_tag=host_repos \
-        -fsdev local,id=fsdev0,path=$SHARED_PATH,security_model=mapped-file \
-        -nographic
 fi

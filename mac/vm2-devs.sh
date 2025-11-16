@@ -1,7 +1,7 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 SSHPORT=10002
-
+DISPLAY=devs
 NAME=vm2
 
 VMFILE=$HOME/VMs/$NAME/$NAME.qcow2
@@ -33,7 +33,7 @@ echo
 
 if [[ "$1" == "txt" ]]; then
     qemu-system-aarch64 -M virt -accel hvf -smp 4 -m 12G -cpu cortex-a72 \
-        -name $NAME \
+        -name "$NAME-$DISPLAY" \
         -hda $VMFILE \
         -drive "format=raw,file=$EDK2_FILE,if=pflash,readonly=on" \
         -drive "format=raw,file=$OVMF_FILE,if=pflash" \
@@ -43,7 +43,7 @@ if [[ "$1" == "txt" ]]; then
         -nographic
 else
     qemu-system-aarch64 -M virt -accel hvf -smp 2 -m 8G -cpu cortex-a72 \
-        -name $NAME \
+        -name "$NAME-$DISPLAY" \
         -serial mon:stdio \
         -hda $VMFILE \
         -drive "format=raw,file=$EDK2_FILE,if=pflash,readonly=on" \
