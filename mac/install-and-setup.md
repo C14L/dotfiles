@@ -1,4 +1,10 @@
 
+- Add user to sudo group
+
+```
+/usr/sbin/usermod -aG sudo chris
+```
+
 - Remove preinstalled stuff
 
 ```
